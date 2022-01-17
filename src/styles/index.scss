@@ -1,0 +1,137 @@
+.app-main {
+    padding: 10px;
+}
+
+.app-header {
+    display: flex;
+    align-items: center;
+}
+
+.app-body {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    align-items: flex-start;
+    grid-gap: 10px;
+}
+
+.ticker-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    background: #172d3e;
+    min-width: 300px;
+    img.bit-img {
+        max-width: 50px;
+        margin-right: 20px;
+    }
+    p {
+        font-weight: 500;
+        span {
+            opacity: 0.6;
+        }
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+    .percent {
+        img {
+            max-width: 10px;
+            margin: 0 5px;
+        }
+        &.green-text {
+            color: #01a781;
+        }
+        &.red-text {
+            color: #e44b44;
+        }
+    }
+}
+
+@mixin barBg {
+    position: relative;
+    z-index: 1;
+    span {
+        content: '';
+        position: absolute;
+        display: block;
+        height: 100%;
+        background-color: transparent;
+        top: 0;
+        z-index: -1;
+        max-width: 100%;
+    } 
+}
+
+.order-book-container {
+    background-color: #172d3e;
+    display: flex;
+    color: white;
+    position: relative;
+    min-height: 500px;
+    h2 {
+        font-size: 24px;
+        font-weight: bold;
+        margin: 0 0 20px;
+    }
+    table {
+        width: 100%;
+        th {
+            color: #576773;
+            font-size: 14px;
+            font-weight: 500;
+            padding: 5px 15px;
+            text-align: left;
+        }
+        td {
+            color: white;
+            font-size: 14px;
+            font-weight: 500;
+            padding: 5px 15px;
+        }
+        tr {
+            &.bids-row {
+                @include barBg();
+                span {
+                    background-color: #12454c;
+                    right: 0;
+                }
+            }
+            &.asks-row {
+                @include barBg();
+                span {
+                    background-color: #403340;
+                    left: 0;
+                }
+            }
+        }
+    }
+}
+
+.order-book-loader {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    background-color: rgba(0,0,0,0.3);
+    z-index: 2;
+    align-items: center;
+    justify-content: center;
+}
+
+.bfx-logo-text {
+    color: white;
+}
+
+.ml-auto {
+    margin-left: auto;
+}
+
+.btn {
+    padding: 8px 15px;
+    font-size: 14px;
+    border: 1px solid white;
+    border-radius: 4px;
+    margin: 0 5px;
+    cursor: pointer;
+}
